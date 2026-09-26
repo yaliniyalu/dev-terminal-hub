@@ -1,0 +1,20 @@
+{
+  "global": {
+    "title": "Dev Terminal Hub (Local Test)",
+    "autoStartOnBoot": false,
+    "bufferChars": 30000,
+    "defaultCwd": ".",
+    "defaultShell": "powershell.exe",
+    "defaultEnv": {}
+  },
+  "commands": [
+    {
+      "id": "project-root",
+      "name": "Project Root",
+      "command": "node --version",
+      "autoStart": false,
+      "cwd": ".",
+      "env": {}
+    }
+  ]
+}

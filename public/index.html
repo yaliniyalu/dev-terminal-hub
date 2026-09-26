@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Command Terminal Hub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/@xterm/xterm/css/xterm.css" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-row">
+          <h1 id="appTitle">Terminal Manager</h1>
+          <div class="gear-wrap">
+            <button id="globalMenuBtn" class="btn gear-btn" type="button" title="Global actions">&#9881;</button>
+            <div id="globalMenu" class="global-popover">
+              <button id="runAllBtn" class="btn btn-popover" type="button">Run All</button>
+              <button id="stopAllBtn" class="btn btn-popover" type="button">Stop All</button>
+              <button id="restartAllBtn" class="btn btn-popover" type="button">Restart All</button>
+              <button id="reloadConfigBtn" class="btn btn-popover btn-reload" type="button">Reload Config</button>
+              <button id="themeTglBtn" class="btn btn-popover" type="button">🌙 Dark Mode</button>
+            </div>
+          </div>
+        </div>
+        <p id="configPath">Config not loaded</p>
+        <div class="sidebar-view-nav">
+          <button id="viewTerminalBtn" class="btn sidebar-nav-btn active" type="button">Terminal</button>
+          <button id="viewOverviewBtn" class="btn sidebar-nav-btn" type="button">Overview</button>
+        </div>
+      </div>
+
+      <div class="list-header">
+        <span>Commands</span>
+        <span id="commandCount">0 commands</span>
+      </div>
+
+      <div id="commandList" class="command-list"></div>
+    </aside>
+
+    <main class="main-panel">
+      <div id="terminal-panel">
+        <div class="main-head">
+          <div>
+            <h2 id="activeName">No command selected</h2>
+            <p id="activeMeta">Select a command on the left.</p>
+          </div>
+          <div class="main-head-right">
+            <div id="activeStatus" class="main-status">stopped</div>
+            <div class="terminal-actions">
+              <div id="termUrlActions" class="url-actions-container"></div>
+              <button id="termRunBtn" class="btn btn-term" type="button" disabled>Run</button>
+              <button id="termStopBtn" class="btn btn-term" type="button" disabled>Stop</button>
+              <button id="termRestartBtn" class="btn btn-term" type="button" disabled>Restart</button>
+              <button id="termScrollBtn" class="btn btn-term" type="button" title="Scroll to bottom">↓</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="terminal-wrap">
+          <div id="terminal"></div>
+        </div>
+
+        <div id="notice" class="notice">
+          <span id="noticeText">Ready</span>
+          <button id="noticeCloseBtn" class="notice-close" type="button">×</button>
+        </div>
+      </div>
+
+      <div id="overview-panel" class="overview-panel" hidden>
+        <div id="overviewGrid" class="overview-grid"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/@xterm/xterm/lib/xterm.js"></script>
+  <script src="https://unpkg.com/@xterm/addon-fit/lib/addon-fit.js"></script>
+  <script src="/app.js?v=7"></script>
+</body>
+</html>

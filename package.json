@@ -1,0 +1,31 @@
+{
+  "name": "dev-terminal-hub",
+  "version": "1.0.0",
+  "description": "A browser-based terminal manager for project commands",
+  "type": "module",
+  "main": "server.js",
+  "bin": {
+    "dev-terminal-hub": "./bin/dev-terminal-hub.js"
+  },
+  "files": [
+    "bin/",
+    "public/",
+    "src/",
+    "README.md",
+    "server.js"
+  ],
+  "scripts": {
+    "start": "node bin/dev-terminal-hub.js --config ./dev.config.json",
+    "dev": "node bin/dev-terminal-hub.js --config ./dev.config.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.33.0",
+  "dependencies": {
+    "express": "^5.2.1",
+    "node-pty": "^1.1.0",
+    "qs": "^6.16.0",
+    "socket.io": "^4.8.3"
+  }
+}
